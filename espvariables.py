@@ -38,7 +38,7 @@ movetext    = "Mover tarea seleccionada"
 listsnames = ["Tareas para hacer", "Tareas actuales", "Tareas completadas"]
 
 aboutinfo = ["Acerca de Projectbot",
-    "Hecho por: t0m45DEV\nUsando: Python\nVersion: 3.1"]
+    "Hecho por: t0m45DEV\nUsando: Python\nVersion: 3.2"]
 
 todotasklist  = []
 doingtasklist = []

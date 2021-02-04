@@ -3,8 +3,10 @@ from tkinter import filedialog
 import tkinter as tk
 import io
 
-def init(language):
-    chooselanguage(language)
+def init():
+    plen = io.open("plen.txt", "r")
+    readedplen = plen.readlines()
+    chooselanguage(readedplen)
 
     variables.root = tk.Tk()
     variables.root.title(variables.windowtitle)
@@ -21,6 +23,8 @@ def init(language):
 
 def chooselanguage(language):
     global variables
+    language = language[0].replace("\n", "")
+    predeterminatelanguage(language)
 
     if language == "español":
         import espvariables as variables
@@ -60,8 +64,26 @@ def windowmenu():
         menu=variables.helpmenu)
 
 def changelanguage(language):
+    predeterminatelanguage(language)
     variables.root.destroy()
-    init(language)
+    init()
+
+
+def predeterminatelanguage(language):
+
+    plen = io.open("plen.txt", "r+")
+    readedplen = plen.read()
+
+    if readedplen == language:
+        pass
+
+    else:
+        plen.seek(0)
+        plen.truncate(0)
+        plen.write(language)
+
+    plen.close()
+
 
 def aboutwindow():
     messagebox.showinfo(variables.aboutinfo[0], variables.aboutinfo[1])
